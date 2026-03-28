@@ -1,15 +1,20 @@
 import os
-from dotenv import load_dotenv
+import streamlit as st
 from langchain_groq import ChatGroq
 from langchain_experimental.agents import create_pandas_dataframe_agent
-import pandas as pd
-
-load_dotenv()
 
 def get_agent(df):
+    # Works both locally and on Streamlit Cloud
+    try:
+        api_key = st.secrets["GROQ_API_KEY"]
+    except:
+        from dotenv import load_dotenv
+        load_dotenv()
+        api_key = os.getenv("GROQ_API_KEY")
+
     llm = ChatGroq(
         model="llama-3.3-70b-versatile",
-        api_key=os.getenv("GROQ_API_KEY"),
+        api_key=api_key,
         temperature=0
     )
     
