@@ -4,7 +4,7 @@ from agent import get_agent
 
 # ── Page config ────────────────────────────────────────────────────────────────
 st.set_page_config(
-    page_title="Chat with your CSV",
+    page_title="AI Agent - Automated EDA Tool",
     page_icon="🧠",
     layout="wide",
     initial_sidebar_state="expanded",
